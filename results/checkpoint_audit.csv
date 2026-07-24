@@ -1,0 +1,3 @@
+checkpoint,stage,windows,mse,mae,ssim,psnr,scope,interpretation
+TAU init,initialization,6664,206.282745,3296.705322,0.940354,31.831150,head-only paired audit,preservation measurement; not a causal comparison
+TAU + PhysicsHead,epoch 9,6664,206.276154,3295.406250,0.940346,31.835566,head-only paired audit,preservation measurement; not a causal comparison

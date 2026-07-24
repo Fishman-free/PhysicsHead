@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying work."
+title: "PhysicsHead"
+type: software
+version: 0.1.0
+date-released: 2026-07-24
+authors:
+  - family-names: Qin
+    given-names: Junqi
+  - family-names: Ma
+    given-names: Zhuqi
+  - family-names: Xiong
+    given-names: Yangming
+  - family-names: Wang
+    given-names: Qipeng
+repository-code: "https://github.com/Fishman-free/PhysicsHead"
+license: MIT
