@@ -15,8 +15,6 @@ ALLOWED = {
     "src/physicshead/head.py",
     "src/physicshead/losses.py",
     "examples/tau_integration.py",
-    "results/checkpoint_audit.csv",
-    "results/provenance.json",
     "tests/test_head.py",
     "tests/test_losses.py",
     "tests/test_public_api.py",
@@ -47,6 +45,7 @@ def release_text():
 def test_allowlist_and_large_files():
     assert release_files() == ALLOWED
     assert all((ROOT / path).stat().st_size < 1_000_000 for path in ALLOWED)
+    assert not (ROOT / "results").exists()
 
 
 def test_no_data_or_model_artifacts():

@@ -10,9 +10,10 @@ branches:
   gradient is interpreted as an **image-plane motion proxy**, not calibrated
   fluid velocity.
 
-The head does not sit in the RGB prediction path. The accompanying checkpoint
-numbers are a paired preservation audit, not evidence that the auxiliary head
-causally improves RGB prediction.
+The head does not sit in the RGB prediction path and can be omitted from an
+RGB-only deployment. This repository contains the architecture, auxiliary
+losses, and a TAU integration example. Datasets, checkpoints, training logs,
+and experiment result tables are not included.
 
 ## Installation
 
@@ -59,23 +60,9 @@ The package exposes:
 - `FlowSupervisionLoss`: masked MSE by default, with optional Smooth L1;
 - `WarpingLoss`: adjacent-mask backward-warp consistency with detached targets.
 
-No PDE residual is included. For the reported training convention, offline
-apparent-flow targets and head motion used the same scale factor; divide the
-motion proxy by that factor before `WarpingLoss` to restore the pixel-frame
-warp convention.
-
-## Reported audit and provenance
-
-`results/checkpoint_audit.csv` contains the two 6,664-window checkpoint rows at
-full recorded precision. The run fitted the head while backbone trainable
-tensors were frozen; the selected row is epoch 9. These measurements establish
-checkpoint preservation only and are not a causal comparison.
-
-`results/provenance.json` records the release counts and accounting definitions:
-328 archive clips, 309 release clips from 46 sources, 30,247 windows, and zero
-source overlap between partitions. Data, masks, optical-flow targets,
-checkpoints, logs, older designs, and version-control history are excluded from
-this source release.
+No PDE residual is included. `WarpingLoss` expects pixel-per-frame motion. If
+flow targets and head motion use a shared scale factor, divide the motion proxy
+by that factor before warping.
 
 ## Testing
 
